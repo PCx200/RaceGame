@@ -1002,6 +1002,14 @@ MonoBehaviour:
         m_Groups: 
         m_Action: Join
         m_Flags: 0
+      - m_Name: 
+        m_Id: f2dbf946-5068-4c7b-8f40-83bd5166ed49
+        m_Path: <DualShockGamepad>/buttonSouth
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_PlayerPrefab: {fileID: 8080444494454956481, guid: c1df23f5e49f2644a8584228a6d885eb, type: 3}
