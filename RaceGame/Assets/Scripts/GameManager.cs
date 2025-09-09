@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,28 +9,34 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private int playerCount;
-    bool isSplited;
+    [NonSerialized] public bool isSplited;
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] GameObject boarderPanel;
 
-    [SerializeField] GameObject[] PlayerPrefabs;
+    [SerializeField] GameObject[] playerPrefabs;
 
     private void Awake()
     {
         Instance = this;
     }
+    private void Start()
+    {
+        GetSpawnPoint(0);
+        PickCar(0);
+    }
 
     private void Update()
     {
-        SplitScreen();
+       StartCoroutine(SplitScreen());
     }
 
-    void SplitScreen()
+    IEnumerator SplitScreen()
     {
         if (!isSplited)
-        {
+        {           
             if (GetPlayerCount() == 2)
             {
+                yield return new WaitForSeconds(5);
                 boarderPanel.SetActive(true);
                 foreach (PlayerInput player in FindObjectsByType<PlayerInput>(sortMode: FindObjectsSortMode.None))
                 {
@@ -46,6 +54,11 @@ public class GameManager : MonoBehaviour
         }
         return null;
     }
+
+    public void TeleportToSpawnPoint()
+    { 
+        
+    }
     public int GetPlayerCount()
     {
         return playerCount;
@@ -57,6 +70,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject GetPlayerPrefab(int index)
     {
-        return PlayerPrefabs[index];
+        return playerPrefabs[index];
+    }
+
+    public void PickCar(int index)
+    {
+        PlayerInputManager.instance.playerPrefab = GetPlayerPrefab(index);
     }
 }

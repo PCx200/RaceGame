@@ -12,7 +12,10 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        Move();
+        if (GameManager.Instance.isSplited)
+        { 
+            Move();
+        }
     }
 
     public void OnMove(InputValue input)
@@ -22,7 +25,7 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        Vector3 move = new Vector3(movementInput.x, 0, 1);
+        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
 
         float currentSpeed = movementSpeed;
         if (isBraking)
