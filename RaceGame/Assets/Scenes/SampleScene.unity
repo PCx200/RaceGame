@@ -995,16 +995,8 @@ MonoBehaviour:
         m_Action: Join
         m_Flags: 0
       - m_Name: 
-        m_Id: 704cf2a4-bc3f-4d92-8f0e-174da2a36af3
-        m_Path: <XInputController>/buttonWest
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Join
-        m_Flags: 0
-      - m_Name: 
-        m_Id: f2dbf946-5068-4c7b-8f40-83bd5166ed49
-        m_Path: <DualShockGamepad>/buttonSouth
+        m_Id: e8be5bd3-b81a-4316-8e04-b3c8a969d867
+        m_Path: <Gamepad>/buttonSouth
         m_Interactions: 
         m_Processors: 
         m_Groups: 
