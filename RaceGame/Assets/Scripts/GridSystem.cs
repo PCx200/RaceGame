@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class GridSystem : MonoBehaviour
 {
@@ -8,8 +10,8 @@ public class GridSystem : MonoBehaviour
     public Camera gridCamera;
     private GameObject ghostObject;
     private HashSet<Vector3> occupiedPosition = new HashSet<Vector3>();
-
-    
+    [Header("Input")]
+    public VirtualMouseInput virtualMouseInput;
 
     private void Start()
     {
@@ -19,10 +21,11 @@ public class GridSystem : MonoBehaviour
     private void Update()
     {
         UpdateGhostPosition();
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0)|| (virtualMouseInput != null && virtualMouseInput.virtualMouse.leftButton.isPressed))
         {
             PlaceObject();
         }
+       
     }
     void CreateGhostObject()
     {
@@ -52,9 +55,23 @@ public class GridSystem : MonoBehaviour
 
     void UpdateGhostPosition()
     {
-        Ray ray =gridCamera.ScreenPointToRay(Input.mousePosition);//or mouseCursorJoystick.transform.position
+        Vector2 screenPos;
 
-        if(Physics.Raycast(ray, out RaycastHit hit))
+        if (virtualMouseInput != null && virtualMouseInput.virtualMouse != null)
+        {
+            // Use virtual mouse
+            screenPos = virtualMouseInput.virtualMouse.position.ReadValue();
+        }
+        else
+        {
+            // Fallback to hardware mouse
+            screenPos = Mouse.current != null
+                ? Mouse.current.position.ReadValue()
+                : (Vector2)Input.mousePosition;
+        }
+        Ray ray = gridCamera.ScreenPointToRay(screenPos);//or mouseCursorJoystick.transform.position
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Vector3 point = hit.point;
 
@@ -78,6 +95,7 @@ public class GridSystem : MonoBehaviour
             
         }
     }
+
 
     void SetGhostColor(Color color)
     {
