@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Chainsaw : MonoBehaviour
 {
+    public Vector3 spinAxis = new Vector3 (0f, 0f, 1f);
+
     public float moveAmplitude = 2f; 
     public float moveSpeed = 2f;    
     public float spinSpeed = 90f;    
@@ -21,7 +23,7 @@ public class Chainsaw : MonoBehaviour
 
         transform.position = startPos + new Vector3(posOffset, 0f, 0f);
 
-        transform.Rotate(Vector3.up, spinSpeed * Time.deltaTime);
+        transform.Rotate(spinAxis, spinSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
