@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject boarderPanel;
 
     [SerializeField] GameObject[] playerPrefabs;
+
+    public List<PlayerInput> playerInputs = new List<PlayerInput>();
 
     private void Awake()
     {

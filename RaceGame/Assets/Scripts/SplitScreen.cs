@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,10 +10,12 @@ public class SplitScreen : MonoBehaviour
     Camera cam;
     int index;
 
+    public PlayerInput playerInput;
+
     private void Awake()
     {
         PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
-        
+        playerInput.SwitchCurrentControlScheme("Gamepad",Gamepad.current);
     }
 
     private void Update()
@@ -22,6 +26,12 @@ public class SplitScreen : MonoBehaviour
     private void OnPlayerJoined(PlayerInput input)
     {
         GameManager.Instance.PickCar(1);
+        GameManager.Instance.playerInputs.Add(input);
+        
+        //PlayerInput player2 = playersInputs[1];
+
+        Debug.Log(input);
+        //Debug.Log(player2);
 
         Transform spawnPoint = GameManager.Instance.GetSpawnPoint(input.playerIndex);
         Debug.Log(input.playerIndex);
@@ -49,5 +59,16 @@ public class SplitScreen : MonoBehaviour
         {
             OnPlayerJoined(GetComponentInParent<PlayerInput>());
         }
+    }
+
+    public PlayerInput SetPlayerInput(List<PlayerInput> inputs, PlayerInput input)
+    {
+        for (int i = 0; i < inputs.Count; i++)
+        {
+            input = inputs[i];
+        }
+        return input;
+
+        
     }
 }

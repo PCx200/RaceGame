@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,6 +13,8 @@ public class GridSystem : MonoBehaviour
     private HashSet<Vector3> occupiedPosition = new HashSet<Vector3>();
     [Header("Input")]
     public VirtualMouseInput virtualMouseInput;
+
+    public InputValue inputValue;
 
     private void Start()
     {
@@ -69,6 +72,7 @@ public class GridSystem : MonoBehaviour
                 ? Mouse.current.position.ReadValue()
                 : (Vector2)Input.mousePosition;
         }
+
         Ray ray = gridCamera.ScreenPointToRay(screenPos);//or mouseCursorJoystick.transform.position
 
         if (Physics.Raycast(ray, out RaycastHit hit))

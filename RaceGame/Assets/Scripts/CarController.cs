@@ -1,63 +1,88 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
-    public float motorForce = 100;
-    public float breakForce = 1000f;
-    public float maxSteerAngle = 30;
+    [Header("Car Settings")]
+    [SerializeField] float motorForce = 100f;
+    [SerializeField] float breakForce = 1000f;
+    [SerializeField] float maxSteerAngle = 30f;
 
-    public WheelCollider frontLeftWheelCollider;
-    public WheelCollider frontRightWheelCollider;
-    public WheelCollider backLeftWheelCollider;
-    public WheelCollider backRightWheelCollider;
+    [Header("Wheels")]
+    [SerializeField] WheelCollider frontLeftWheelCollider;
+    [SerializeField] WheelCollider frontRightWheelCollider;
+    [SerializeField] WheelCollider backLeftWheelCollider;
+    [SerializeField] WheelCollider backRightWheelCollider;
 
-    public Transform frontLeftWheelTransform;
-    public Transform frontRightWheelTransform;
-    public Transform backLeftWheelTransform;
-    public Transform backRightWheelTransform;
+    [SerializeField] Transform frontLeftWheelTransform;
+    [SerializeField] Transform frontRightWheelTransform;
+    [SerializeField] Transform backLeftWheelTransform;
+    [SerializeField] Transform backRightWheelTransform;
 
-    private float horizontalInput;
-    private float verticalInput;
+    //[SerializeField] float movementSpeed;
+    Vector2 movementInput;
+
+    bool isBraking;
+
     private float currentSteerAngle;
     private float currentBreakForce;
 
-    private bool isBraking;
+    //[SerializeField] float brakingPower;
 
-    private void GetInput()
+    void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        isBraking = Input.GetKey(KeyCode.Space);
+        if (GameManager.Instance.isSplited)
+        {
+            HandleMotor();
+            HandleSteering();
+            UpdateWheels();
+        }
+    }
 
+    public void OnMove(InputValue input)
+    {
+        movementInput = input.Get<Vector2>();
+    }
+    public void OnBreak(InputValue input)
+    {
+        isBraking = input.isPressed;
+
+        if (isBraking)
+        {
+            Debug.Log("Breaking");
+        }
+        else { Debug.Log("Not Breaking"); }
     }
 
     private void HandleMotor()
     {
-        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
-        frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+        frontLeftWheelCollider.motorTorque = movementInput.y * motorForce;
+        frontRightWheelCollider.motorTorque = movementInput.y * motorForce;
+
         currentBreakForce = isBraking ? breakForce : 0f;
         ApplyBraking();
     }
 
     private void ApplyBraking()
     {
-        frontLeftWheelCollider.brakeTorque = currentBreakForce;
-        frontRightWheelCollider.brakeTorque = currentBreakForce;
-        backLeftWheelCollider.brakeTorque = currentBreakForce;
-        backRightWheelCollider.brakeTorque = currentBreakForce;
+        float brake = isBraking ? currentBreakForce : 0f;
+
+        frontLeftWheelCollider.brakeTorque = brake;
+        frontRightWheelCollider.brakeTorque = brake;
+        backLeftWheelCollider.brakeTorque = brake;
+        backRightWheelCollider.brakeTorque = brake;
+       
     }
 
     private void HandleSteering()
     {
-        currentSteerAngle = maxSteerAngle * horizontalInput;
+        currentSteerAngle = maxSteerAngle * movementInput.x;
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;
-        //backRightWheelCollider.steerAngle= currentSteerAngle;
-        //backLeftWheelCollider.steerAngle = currentSteerAngle;
-        
     }
 
-    private void UpdateSingleWheel(WheelCollider wheelColider,Transform wheelTransform)
+    private void UpdateSingleWheel(WheelCollider wheelColider, Transform wheelTransform)
     {
         Vector3 pos;
         Quaternion rot;
@@ -68,18 +93,26 @@ public class CarController : MonoBehaviour
 
     private void UpdateWheels()
     {
-        UpdateSingleWheel(frontLeftWheelCollider,frontLeftWheelTransform);
-        UpdateSingleWheel(backLeftWheelCollider,backLeftWheelTransform);
-        UpdateSingleWheel(frontRightWheelCollider,frontRightWheelTransform);
-        UpdateSingleWheel(backRightWheelCollider,backRightWheelTransform);
+        UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
+        UpdateSingleWheel(backLeftWheelCollider, backLeftWheelTransform);
+        UpdateSingleWheel(frontRightWheelCollider, frontRightWheelTransform);
+        UpdateSingleWheel(backRightWheelCollider, backRightWheelTransform);
     }
+    //private void Move()
+    //{
+    //    Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
 
-    // Update is called once per frame
-    void Update()
-    {
-        GetInput();
-        HandleMotor();
-        HandleSteering();
-        UpdateWheels();
-    }
+    //    float currentSpeed = movementSpeed;
+    //    if (isBraking)
+    //    {
+    //        currentSpeed *= brakingPower;
+    //    }
+    //    else
+    //    {
+    //        currentSpeed = movementSpeed;
+    //    }
+
+
+    //    transform.Translate(move * currentSpeed * Time.deltaTime, Space.World);
+    //}
 }
