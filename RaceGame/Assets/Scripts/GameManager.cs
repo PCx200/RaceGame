@@ -9,14 +9,14 @@ using static UnityEngine.Rendering.DebugUI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private int playerCount;
+    [SerializeField] private int playerCount;
     [NonSerialized] public bool isSplited;
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] GameObject boarderPanel;
 
     [SerializeField] GameObject[] playerPrefabs;
 
-    public GameObject MainCamera;
+    [SerializeField] GameObject mainCamera;
 
     private void Awake()
     {
@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        GetSpawnPoint(0);
-        PickCar(0);
+        //GetSpawnPoint(0);
+        //PickCar(0);
     }
 
     private void Update()
@@ -37,15 +37,11 @@ public class GameManager : MonoBehaviour
     {
         if (!isSplited)
         {           
-            if (GetPlayerCount() == 2)
+            if (PlayerInputManager.instance.playerCount == 2)
             {
                 yield return new WaitForSeconds(5);
                 boarderPanel.SetActive(true);
-                //foreach (PlayerInput player in FindObjectsByType<PlayerInput>(sortMode: FindObjectsSortMode.None))
-                //{
-                //    //player.camera.enabled = true;
-                //    //mainCamera.SetActive(false);
-                //}
+                mainCamera.SetActive(false);
                 isSplited = true;
             }
         }
@@ -67,9 +63,9 @@ public class GameManager : MonoBehaviour
     {
         return playerCount;
     }
-    public void IncreasePlayerCount()
+    public void UpdatePlayerCount()
     {
-        playerCount++;
+        playerCount = PlayerInputManager.instance.playerCount;  
     }
 
     public GameObject GetPlayerPrefab(int index)

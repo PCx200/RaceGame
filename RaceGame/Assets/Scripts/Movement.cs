@@ -20,15 +20,12 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform backLeftWheelTransform;
     [SerializeField] Transform backRightWheelTransform;
 
-    //[SerializeField] float movementSpeed;
     Vector2 movementInput;
 
     bool isBraking;
 
     private float currentSteerAngle;
     private float currentBreakForce;
-
-    //[SerializeField] float brakingPower;
 
     void Update()
     {
@@ -101,21 +98,4 @@ public class Movement : MonoBehaviour
         UpdateSingleWheel(frontRightWheelCollider, frontRightWheelTransform);
         UpdateSingleWheel(backRightWheelCollider, backRightWheelTransform);
     }
-    //private void Move()
-    //{
-    //    Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
-
-    //    float currentSpeed = motorForce;
-    //    if (isBraking)
-    //    {
-    //        currentSpeed *= brakingPower;
-    //    }
-    //    else
-    //    {
-    //        currentSpeed = movementSpeed;
-    //    }
-
-
-    //    transform.Translate(move * currentSpeed * Time.deltaTime, Space.World);
-    //}
 }
