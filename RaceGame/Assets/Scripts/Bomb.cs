@@ -4,15 +4,18 @@ public class Bomb : MonoBehaviour
 {
     public GameObject explosion;
 
+    public PlaySoundEffect playSoundEffect;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Trap")
         {
-            //play sound
             explosion = Instantiate(explosion,transform.position,Quaternion.identity);
+            playSoundEffect = explosion.GetComponent<PlaySoundEffect>();
+            playSoundEffect.PlaySound();
             Object.Destroy(gameObject);
             Object.Destroy(other.gameObject);
-            Destroy(explosion, 1f);
+            Destroy(explosion, playSoundEffect.soundEffect.length);
         }
     }
 }
