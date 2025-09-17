@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject[] playerPrefabs;
 
+    public GameObject MainCamera;
+
     private void Awake()
     {
         Instance = this;
@@ -38,10 +40,11 @@ public class GameManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(5);
                 boarderPanel.SetActive(true);
-                foreach (PlayerInput player in FindObjectsByType<PlayerInput>(sortMode: FindObjectsSortMode.None))
-                {
-                    player.camera.enabled = true;
-                }
+                //foreach (PlayerInput player in FindObjectsByType<PlayerInput>(sortMode: FindObjectsSortMode.None))
+                //{
+                //    //player.camera.enabled = true;
+                //    //mainCamera.SetActive(false);
+                //}
                 isSplited = true;
             }
         }
@@ -75,6 +78,7 @@ public class GameManager : MonoBehaviour
 
     public void PickCar(int index)
     {
+        Debug.Log($"Index: {index}");
         PlayerInputManager.instance.playerPrefab = GetPlayerPrefab(index);
     }
 }

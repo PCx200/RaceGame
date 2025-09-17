@@ -60,8 +60,11 @@ public class Movement : MonoBehaviour
         frontLeftWheelCollider.motorTorque = movementInput.y * motorForce;
         frontRightWheelCollider.motorTorque = movementInput.y * motorForce;
 
-        currentBreakForce = isBraking ? breakForce : 0f;
-        ApplyBraking();
+        backLeftWheelCollider.motorTorque = movementInput.y * motorForce;
+        backRightWheelCollider.motorTorque = movementInput.y * motorForce;
+
+        //currentBreakForce = isBraking ? breakForce : 0f;
+        //ApplyBraking();
     }
 
     private void ApplyBraking()
@@ -102,7 +105,7 @@ public class Movement : MonoBehaviour
     //{
     //    Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
 
-    //    float currentSpeed = movementSpeed;
+    //    float currentSpeed = motorForce;
     //    if (isBraking)
     //    {
     //        currentSpeed *= brakingPower;

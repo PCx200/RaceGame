@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Camera))]
+//[RequireComponent(typeof(Camera))]
 public class SplitScreen : MonoBehaviour
 {
     Camera cam;
@@ -35,15 +35,16 @@ public class SplitScreen : MonoBehaviour
     {
         if (GameManager.Instance.GetPlayerCount() == 2 && GameManager.Instance.isSplited)
         {
-            cam.rect = new Rect(index == 0 ? 0 : 0.5f, 0, 0.5f, 1);
+            //cam.rect = new Rect(index == 0 ? 0 : 0.5f, 0, 0.5f, 1);
+            GameManager.Instance.MainCamera.SetActive(false);
         }
     }
 
     void Start()
     {
         index = GetComponentInParent<PlayerInput>().playerIndex;
-        cam = GetComponent<Camera>();
-        cam.depth = index;
+        //cam = GetComponent<Camera>();
+        //cam.depth = index;
 
         if (index == 0)
         {
