@@ -121,16 +121,15 @@ public class TrapSpawner : MonoBehaviour
 
         // Wait until action is performed AND the spot is clear
         yield return new WaitUntil(() =>
-        {
-            bool pressed = placeAction.WasPerformedThisFrame();
+        
+           placeAction.WasPerformedThisFrame()
             //bool areaClear = !Physics.CheckSphere(
             //    previewTrapCollider.bounds.center,
             //    previewTrapCollider.radius * previewTrapCollider.transform.lossyScale.x,
             //    LayerMask.GetMask("Trap") // optional layer filter
             //);
-            print(pressed);
-            return pressed /*&& areaClear*/;
-        });
+           /*&& areaClear*/
+        );
 
         // Spawn trap
         Instantiate(trap.object3D, transform.position, Quaternion.identity);
