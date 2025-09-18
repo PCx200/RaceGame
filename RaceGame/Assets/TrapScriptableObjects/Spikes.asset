@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c12255fe447b1499f8dabdc1167fde, type: 3}
+  m_Name: Spikes
+  m_EditorClassIdentifier: 
+  uiPicture: {fileID: 21300000, guid: 9dc2f01cc4bd63b438418471466a64e9, type: 3}
+  object3D: {fileID: 268815283011895630, guid: 315de74d81710f243bb23a636c3c2678, type: 3}
