@@ -47,7 +47,7 @@ public class TrapSpawner : MonoBehaviour
         List<TrapScriptableObject> trapsForRound = new List<TrapScriptableObject>();
         for (int i = 0; i < 3; i++)
         {
-            trapsForRound.Add(traps[4/*Random.Range(0, traps.Count-1)*/]);
+            trapsForRound.Add(traps[Random.Range(0, traps.Count-1)]);
             print(trapsForRound[i]);
         }
 
@@ -58,11 +58,9 @@ public class TrapSpawner : MonoBehaviour
     {
         mesh.enabled = false;
 
-        List<GameObject> tempTraps = new List<GameObject>();
         for (int i = 0;i < trapsForRound.Count;i++)
         {
             trap = trapsForRound[i];
-            tempTraps.Add(trap.object3D);
             GameObject previewInstance = Instantiate(trap.object3D, this.transform, worldPositionStays: false);
             previewInstance.transform.localPosition = Vector3.zero;
             previewInstance.transform.localRotation = Quaternion.identity;
@@ -119,19 +117,10 @@ public class TrapSpawner : MonoBehaviour
     {
         InputAction placeAction = playerInput.actions["PlaceTrap"];
 
-        // Wait until action is performed AND the spot is clear
-        yield return new WaitUntil(() =>
-        
-           placeAction.WasPerformedThisFrame()
-            //bool areaClear = !Physics.CheckSphere(
-            //    previewTrapCollider.bounds.center,
-            //    previewTrapCollider.radius * previewTrapCollider.transform.lossyScale.x,
-            //    LayerMask.GetMask("Trap") // optional layer filter
-            //);
-           /*&& areaClear*/
-        );
+        yield return null;
 
-        // Spawn trap
+        yield return new WaitUntil(() => placeAction.WasPerformedThisFrame());
+
         Instantiate(trap.object3D, transform.position, Quaternion.identity);
     }
 
