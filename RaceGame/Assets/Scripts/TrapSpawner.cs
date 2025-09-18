@@ -45,10 +45,12 @@ public class TrapSpawner : MonoBehaviour
     public void ChooseTrapsForTheRound()
     {
         List<TrapScriptableObject> trapsForRound = new List<TrapScriptableObject>();
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             trapsForRound.Add(traps[4/*Random.Range(0, traps.Count-1)*/]);
+            print(trapsForRound[i]);
         }
+
         StartCoroutine(WaitToPlaceATrap(trapsForRound));
     }
 
@@ -56,51 +58,61 @@ public class TrapSpawner : MonoBehaviour
     {
         mesh.enabled = false;
 
+        List<GameObject> tempTraps = new List<GameObject>();
         for (int i = 0;i < trapsForRound.Count;i++)
         {
             trap = trapsForRound[i];
+            tempTraps.Add(trap.object3D);
             GameObject previewInstance = Instantiate(trap.object3D, this.transform, worldPositionStays: false);
             previewInstance.transform.localPosition = Vector3.zero;
             previewInstance.transform.localRotation = Quaternion.identity;
 
-            Renderer[] renderers = previewInstance.GetComponentsInChildren<Renderer>();
+            //MakeTheTrapGhost(previewInstance);
 
-            foreach (Renderer renderer in renderers)
-            {
-                Material mat = renderer.material;
-                Color color = mat.color;
-                color.a = 0.5f;
-                mat.color = color;
-
-                mat.SetFloat("_Mode", 2);
-                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                mat.SetInt("_ZWrite", 0);
-                mat.DisableKeyword("_APHATEST_ON");
-                mat.EnableKeyword("_ALPHABLEND_ON");
-                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                mat.renderQueue = 3000;
-
-            }
-
-            SetGhostColor(new Color(0, 1, 0, 0.5f));
+            //SetGhostColor(new Color(0, 1, 0, 0.5f));
 
             //SphereCollider previewTrapCollider = previewInstance.GetComponent<SphereCollider>();
 
             if (trap.uiPicture != null)
             {
-                trapPreviewSprite.sprite = trapsForRound[i++].uiPicture;
+                int num = i;
+                trapPreviewSprite.sprite = trapsForRound[num++].uiPicture;
             }
 
             yield return StartCoroutine(PlaceTrap(playerInput));
 
-            SetGhostColor(new Color(1, 1, 1, 1));
+            //SetGhostColor(new Color(1, 1, 1, 1));
             //SphereCollider sphereCollider = placedTrap.GetComponent<SphereCollider>();
             //sphereCollider.enabled = false;
             Destroy(previewInstance);
         }
 
+      
+
         mesh.enabled = true;
+    }
+
+    private static void MakeTheTrapGhost(GameObject previewInstance)
+    {
+        Renderer[] renderers = previewInstance.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer renderer in renderers)
+        {
+            Material mat = renderer.material;
+            Color color = mat.color;
+            color.a = 0.5f;
+            mat.color = color;
+
+            mat.SetFloat("_Mode", 2);
+            mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            mat.SetInt("_ZWrite", 0);
+            mat.DisableKeyword("_ALPHATEST_ON");
+            mat.EnableKeyword("_ALPHABLEND_ON");
+            mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            mat.renderQueue = 3000;
+
+        }
     }
 
     private IEnumerator PlaceTrap(PlayerInput playerInput)
@@ -122,11 +134,6 @@ public class TrapSpawner : MonoBehaviour
 
         // Spawn trap
         Instantiate(trap.object3D, transform.position, Quaternion.identity);
-    }
-
-    public void SpawnTrap(GameObject trap)
-    {
-        Instantiate(trap,gameObject.transform);
     }
 
     void SetGhostColor(Color color)
