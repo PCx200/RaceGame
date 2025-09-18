@@ -55,13 +55,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 2.5
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -551,13 +551,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 2.5
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -675,6 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30da91d5ec737f54e8b4f29b493f12d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 2747862345703843549}
   motorForce: 1000
   breakForce: 1000
   maxSteerAngle: 55
@@ -753,13 +754,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 2.5
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -910,13 +911,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 2.5
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

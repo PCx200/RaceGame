@@ -4,6 +4,9 @@ using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
+    [SerializeField] Rigidbody rb;
+    float currentSpeed;
+
     [Header("Car Settings")]
     [SerializeField] float motorForce = 100f;
     [SerializeField] float breakForce = 1000f;
@@ -29,7 +32,10 @@ public class CarController : MonoBehaviour
     private float currentBreakForce;
 
     //[SerializeField] float brakingPower;
-
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     void Update()
     {
         if (GameManager.Instance.isSplited)
@@ -37,6 +43,9 @@ public class CarController : MonoBehaviour
             HandleMotor();
             HandleSteering();
             UpdateWheels();
+
+            DisplaySpeed();
+
         }
     }
 
@@ -98,6 +107,19 @@ public class CarController : MonoBehaviour
         UpdateSingleWheel(frontRightWheelCollider, frontRightWheelTransform);
         UpdateSingleWheel(backRightWheelCollider, backRightWheelTransform);
     }
+
+    private void DisplaySpeed()
+    {
+        float speedKmh = rb.linearVelocity.magnitude * 3.6f;
+        currentSpeed = speedKmh;
+        if (speedKmh > 200f)
+        {
+            rb.linearVelocity = rb.linearVelocity.normalized * (200f / 3.6f);
+        }
+
+        //Debug.Log("Car Speed: " + speedKmh.ToString("F1") + " km/h");
+    }
+
     //private void Move()
     //{
     //    Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
