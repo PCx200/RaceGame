@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Spikes : MonoBehaviour
+public class PlayerDeath : MonoBehaviour
 {
     public GameObject explosion;
 
@@ -10,7 +10,7 @@ public class Spikes : MonoBehaviour
         {
             explosion = Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(explosion, 2f);
-            Debug.Log("Write what is happening to the player, when they hit the chainsaw.");
+            Debug.Log("Write what is happening to the player, when they hit the a trap.");
         }
     }
 }

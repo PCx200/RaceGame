@@ -12,8 +12,6 @@ public class Chainsaw : MonoBehaviour
 
     private Vector3 startPos;
 
-    public GameObject explosion;
-
     void Start()
     {
         startPos = transform.position;
@@ -26,15 +24,5 @@ public class Chainsaw : MonoBehaviour
         transform.position = startPos + new Vector3(posOffset, 0f, 0f);
 
         transform.Rotate(spinAxis, spinSpeed * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            explosion = Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(explosion, 2f);
-            Debug.Log("Write what is happening to the player, when they hit the chainsaw.");
-        }
     }
 }
