@@ -10,19 +10,19 @@ public class Chainsaw : MonoBehaviour
 
     private float posOffset;
 
-    private Vector3 startPos;
+    private Vector3 currentPos;
 
     void Start()
     {
-        startPos = transform.position;
+        currentPos = transform.localPosition;
     }
 
     void Update()
     {
         posOffset = Mathf.Sin(Time.time * moveSpeed) * moveAmplitude;
 
-        transform.position = startPos + new Vector3(posOffset, 0f, 0f);
+        transform.localPosition = currentPos + new Vector3(posOffset, 0f, 0f);
 
-        transform.Rotate(spinAxis, spinSpeed * Time.deltaTime);
+        transform.Rotate(spinAxis, spinSpeed * Time.deltaTime, Space.Self);
     }
 }
