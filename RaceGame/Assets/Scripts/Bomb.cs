@@ -18,4 +18,17 @@ public class Bomb : MonoBehaviour
             Destroy(explosion, playSoundEffect.soundEffect.length);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            explosion = Instantiate(explosion, transform.position, Quaternion.identity);
+            playSoundEffect = explosion.GetComponent<PlaySoundEffect>();
+            playSoundEffect.PlaySound();
+            Object.Destroy(gameObject);
+            Object.Destroy(collision.gameObject);
+            Destroy(explosion, playSoundEffect.soundEffect.length);
+        }
+    }
 }
