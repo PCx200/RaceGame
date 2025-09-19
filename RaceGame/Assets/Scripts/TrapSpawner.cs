@@ -24,6 +24,7 @@ public class TrapSpawner : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation; // prevent tipping over
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous; // better collision
+        
         mesh = GetComponent<MeshRenderer>();
         ChooseTrapsForTheRound();
         transformY = transform.position.y;
