@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac069b2d449f520489c899ab148ecc37, type: 3}
   m_Name: LittleLeft
   m_EditorClassIdentifier: 
-  votedRoad: {fileID: 0}
-  roadToSpawn: {fileID: 0}
+  votedRoad: {fileID: 6726121667745528896, guid: c956cdb10d0d5dc4ba10fbad1897bdb8, type: 3}
+  roadToSpawn: {fileID: 5916713620852245289, guid: 7ad3832611bab0048808ac71338d2595, type: 3}

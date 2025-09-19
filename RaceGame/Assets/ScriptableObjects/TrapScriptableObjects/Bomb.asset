@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c12255fe447b1499f8dabdc1167fde, type: 3}
   m_Name: Bomb
   m_EditorClassIdentifier: 
-  uIpicture: {fileID: 0}
-  object3D: {fileID: 0}
+  uiPicture: {fileID: 21300000, guid: a82f5b5531a2a5a4cb0eaa0fee302038, type: 3}
+  object3D: {fileID: 5331551819110161536, guid: ab23bd74d7a6361409cf838877cc2e9c, type: 3}

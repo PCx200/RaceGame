@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c12255fe447b1499f8dabdc1167fde, type: 3}
   m_Name: JumpPad
   m_EditorClassIdentifier: 
-  uiPicture: {fileID: 0}
+  uiPicture: {fileID: 21300000, guid: 402d7de6edf161f4aa1c484f4cb6e641, type: 3}
   object3D: {fileID: 9069802612293331532, guid: 9f5193121cdb0d542bd2b3e842609751, type: 3}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c12255fe447b1499f8dabdc1167fde, type: 3}
   m_Name: Brake
   m_EditorClassIdentifier: 
-  uiPicture: {fileID: 0}
+  uiPicture: {fileID: 21300000, guid: 8a909a2570f0cdd41a162d7e7c1d16a2, type: 3}
   object3D: {fileID: 9146088993425423885, guid: cb55ded6feaad734ea82176ea92f038f, type: 3}

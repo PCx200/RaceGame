@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38c12255fe447b1499f8dabdc1167fde, type: 3}
-  m_Name: BarrelWithInk
+  m_Name: Skull
   m_EditorClassIdentifier: 
-  uiPicture: {fileID: 21300000, guid: 7c53b905c0f35c44eacfbb14510bb831, type: 3}
-  object3D: {fileID: 6584048052834135294, guid: 6462a703b75088f439e7a7073c2fe71c, type: 3}
+  uiPicture: {fileID: 21300000, guid: 8569356cc874d13459a7b81d6cfd00aa, type: 3}
+  object3D: {fileID: 8308718065302971248, guid: 8479a1859b738e4429a1d68af88b1558, type: 3}

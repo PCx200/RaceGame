@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c12255fe447b1499f8dabdc1167fde, type: 3}
   m_Name: Boost
   m_EditorClassIdentifier: 
-  uiPicture: {fileID: 0}
+  uiPicture: {fileID: 21300000, guid: 8420a7623110faf43b22d97fbde0760d, type: 3}
   object3D: {fileID: 1478463033759995196, guid: 33300807588dba24cbc51937bb77fe40, type: 3}

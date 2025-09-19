@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c12255fe447b1499f8dabdc1167fde, type: 3}
   m_Name: WoodBarrier
   m_EditorClassIdentifier: 
-  uiPicture: {fileID: 0}
+  uiPicture: {fileID: 21300000, guid: eb3862fcd08593642a846b9b53c4db37, type: 3}
   object3D: {fileID: 2862460760885320935, guid: 236886dd7f98ee04fb8d5f0f3355f3a9, type: 3}

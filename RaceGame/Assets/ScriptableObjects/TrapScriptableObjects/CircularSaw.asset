@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c12255fe447b1499f8dabdc1167fde, type: 3}
   m_Name: CircularSaw
   m_EditorClassIdentifier: 
-  uiPicture: {fileID: 0}
+  uiPicture: {fileID: 21300000, guid: 229bf560dbf78c745a6b654b757d2b4a, type: 3}
   object3D: {fileID: 235826179384001617, guid: 760b88edcb511ed44b3ded9638fecea6, type: 3}
