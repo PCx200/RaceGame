@@ -15,17 +15,17 @@ public class RoadManager1 : MonoBehaviour
     private RoadContinue roadContinue = RoadContinue.Forward;
     
     private bool votingComplete = false;
-    private Transform lastRoad;
+    [SerializeField] Transform lastRoad;
     private int lastRoadType;
     [SerializeField]private Transform lastEndPoint;
+    [SerializeField] Transform finishPoint;
 
     private void Start()
     {
-        placedRoads.Clear();
         placedRoads.Add((0, startingRoad));
         lastRoad = placedRoads[placedRoads.Count - 1].Item2.transform;
         lastRoadType = placedRoads[placedRoads.Count - 1].Item1;
-       
+        finishPoint.position = lastRoad.position;
         SpawnSpawnerInTheCorrectDirection();
     }
     
@@ -36,28 +36,29 @@ public class RoadManager1 : MonoBehaviour
         lastRoadType = placedRoads[placedRoads.Count - 1].Item1;
         Transform newRoadTransform = lastRoad;
         Vector3 pos = newRoadTransform.position;
+
         if (roadContinue == RoadContinue.Forward)
         {     
-            pos.z -= 30;
+            pos.z += 30;
             Instantiate(roadsToVoteSpawner,pos,Quaternion.identity);
         }
         else if (roadContinue == RoadContinue.Backward)
         {   
-            pos.z += 30;
+            pos.z -= 30;
             newRoadTransform.position = pos;    
-            Instantiate(roadsToVoteSpawner, pos,new Quaternion(0f,180f,0f,0f));
+            Instantiate(roadsToVoteSpawner, pos, Quaternion.identity);
         }
         else if (roadContinue == RoadContinue.Right)
         {    
-            pos.x -= 30;
+            pos.x += 30;
             newRoadTransform.position = pos;
-            Instantiate(roadsToVoteSpawner, pos, new Quaternion(0f, 90f, 0f, 0f));
+            Instantiate(roadsToVoteSpawner, pos, Quaternion.identity);
         }
         else
         {
-            pos.x += 30;
+            pos.x -= 30;
             newRoadTransform.position = pos;
-            Instantiate(roadsToVoteSpawner, pos, new Quaternion(0f, -90f, 0f, 0f));
+            Instantiate(roadsToVoteSpawner, pos, Quaternion.identity);
         }
     }
     public void SpawnRoad(RoadScriptableObject roadData)
@@ -87,7 +88,7 @@ public class RoadManager1 : MonoBehaviour
 
         // Update tracker
         lastEndPoint = endPoint;
-
+        finishPoint.position = lastEndPoint.position;
 
     }
     

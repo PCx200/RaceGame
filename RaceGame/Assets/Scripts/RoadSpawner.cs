@@ -27,7 +27,7 @@ public class RoadSpawner : MonoBehaviour
             }
             roadsToChoose.Add(tempRoad);
             Transform transform = roadToVotePositions[i].transform;
-            GameObject go = Instantiate(tempRoad.votedRoad.gameObject, roadToVotePositions[i].transform.position, Quaternion.identity);
+            GameObject go = Instantiate(tempRoad.votedRoad.gameObject, roadToVotePositions[i].transform.position, tempRoad.roadToSpawn.transform.rotation);
             roadsInTheScene.Add(go);
             Destroy(roadToVotePositions[i]);
             

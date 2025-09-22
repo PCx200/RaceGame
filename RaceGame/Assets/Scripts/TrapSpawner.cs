@@ -37,7 +37,7 @@ public class TrapSpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 move = new Vector3(movementInput.y, 0f, movementInput.x);
+        Vector3 move = new Vector3(movementInput.x, 0f, movementInput.y);
         Vector3 targetPos = rb.position + move * movementSpeed * Time.fixedDeltaTime;
         targetPos.y = transformY;
         rb.MovePosition(targetPos);

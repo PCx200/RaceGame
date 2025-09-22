@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject[] playerPrefabs;
 
     [SerializeField] GameObject mainCamera;
+
+    public List<UnityEvent> events;
 
     private void Awake()
     {
@@ -39,10 +42,13 @@ public class GameManager : MonoBehaviour
         {           
             if (PlayerInputManager.instance.playerCount == 2)
             {
-                yield return new WaitForSeconds(5);
-                boarderPanel.SetActive(true);
-                mainCamera.SetActive(false);
-                isSplited = true;
+                if (boarderPanel != null && mainCamera != null)
+                {
+                    yield return new WaitForSeconds(5);
+                    boarderPanel.SetActive(true);
+                    mainCamera.SetActive(false);
+                    isSplited = true;
+                }
             }
         }
     }
@@ -77,5 +83,10 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Index: {index}");
         PlayerInputManager.instance.playerPrefab = GetPlayerPrefab(index);
+    }
+
+    public void InvokeEvent(int eventId)
+    {
+        events[eventId].Invoke();
     }
 }
