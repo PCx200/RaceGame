@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using static Unity.Cinemachine.CinemachineSplineRoll;
+using System.Collections;
+using UnityEngine.UIElements;
 public class RoadManager1 : MonoBehaviour
 {
     public int totalPlayers = 2; 
@@ -16,9 +18,12 @@ public class RoadManager1 : MonoBehaviour
     
     private bool votingComplete = false;
     [SerializeField] Transform lastRoad;
-    private int lastRoadType;
+    [SerializeField] private int lastRoadType;
     [SerializeField]private Transform lastEndPoint;
     [SerializeField] Transform finishPoint;
+
+    GameObject tempSpawner;
+    int yRotation;
 
     private void Start()
     {
@@ -30,40 +35,36 @@ public class RoadManager1 : MonoBehaviour
     }
     
 
-    private void SpawnSpawnerInTheCorrectDirection()
+    public void SpawnSpawnerInTheCorrectDirection()
     {
-        lastRoad = placedRoads[placedRoads.Count - 1].Item2.transform;
-        lastRoadType = placedRoads[placedRoads.Count - 1].Item1;
         Transform newRoadTransform = lastRoad;
-        Vector3 pos = newRoadTransform.position;
 
-        if (roadContinue == RoadContinue.Forward)
-        {     
-            pos.z += 30;
-            Instantiate(roadsToVoteSpawner,pos,Quaternion.identity);
+        if (lastRoadType == 0)
+        {
+            Vector3 spawnPos = new Vector3(lastEndPoint.position.x, lastEndPoint.position.y, lastEndPoint.position.z + 20);
+
+            tempSpawner = Instantiate(roadsToVoteSpawner, spawnPos, new Quaternion(0,0,0,0));
         }
-        else if (roadContinue == RoadContinue.Backward)
-        {   
-            pos.z -= 30;
-            newRoadTransform.position = pos;    
-            Instantiate(roadsToVoteSpawner, pos, Quaternion.identity);
-        }
-        else if (roadContinue == RoadContinue.Right)
-        {    
-            pos.x += 30;
-            newRoadTransform.position = pos;
-            Instantiate(roadsToVoteSpawner, pos, Quaternion.identity);
+        else if (lastRoadType == 1)
+        {
+            Vector3 spawnPos = new Vector3(lastEndPoint.position.x - 20, lastEndPoint.position.y, lastEndPoint.position.z);
+            Quaternion rotation = new Quaternion(0, lastEndPoint.localEulerAngles.y - 90, 0, 0);
+            tempSpawner = Instantiate(roadsToVoteSpawner, spawnPos, rotation);
         }
         else
         {
-            pos.x -= 30;
-            newRoadTransform.position = pos;
-            Instantiate(roadsToVoteSpawner, pos, Quaternion.identity);
+            Vector3 spawnPos = new Vector3(lastEndPoint.position.x + 20, lastEndPoint.position.y, lastEndPoint.position.z);
+            Quaternion rotation = new Quaternion(0, lastEndPoint.localEulerAngles.y + 90, 0, 0);
+            tempSpawner = Instantiate(roadsToVoteSpawner, spawnPos, rotation);
         }
     }
     public void SpawnRoad(RoadScriptableObject roadData)
     {
         GameObject newRoad = Instantiate(roadData.roadToSpawn);
+        placedRoads.Add((roadData.roadType, newRoad));
+
+        lastRoad = placedRoads[placedRoads.Count - 1].Item2.transform;
+        lastRoadType = placedRoads[placedRoads.Count - 1].Item1;
 
         // Get spawn markers
         Transform startPoint = newRoad.transform.Find("StartPoint");
@@ -89,7 +90,16 @@ public class RoadManager1 : MonoBehaviour
         // Update tracker
         lastEndPoint = endPoint;
         finishPoint.position = lastEndPoint.position;
+        finishPoint.rotation = lastEndPoint.rotation;
 
+        Destroy(tempSpawner);
+        StartCoroutine(PutNextRoad());
+    }
+
+    public IEnumerator PutNextRoad()
+    {
+        yield return new WaitForSeconds(2);
+        GameManager.Instance.InvokeEvent(0);
     }
     
 }
