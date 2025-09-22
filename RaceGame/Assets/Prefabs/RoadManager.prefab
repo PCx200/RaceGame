@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2197042363007359108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1242428427570222986}
+  - component: {fileID: 653083528360139868}
+  m_Layer: 0
+  m_Name: RoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1242428427570222986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2197042363007359108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 76.59627, y: 12.133862, z: 98.91425}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &653083528360139868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2197042363007359108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9fd96df3d660a43bed020abe0815c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalPlayers: 2
+  roads:
+  - {fileID: 11400000, guid: 2c2241c037e722a4a979f857b9170ccf, type: 2}
+  - {fileID: 11400000, guid: bd391fdb8671cca42ab0dbf320fe2440, type: 2}
+  - {fileID: 11400000, guid: 738663baea29b9140b6f6492bcaac1b3, type: 2}
+  - {fileID: 11400000, guid: fb53236bd9086a24593f4cd0f2dc14f9, type: 2}
+  - {fileID: 11400000, guid: 8423a18f7a6167c4eb37493127831d81, type: 2}
+  roadsToVoteSpawner: {fileID: 2699297076477263345, guid: 9d03df621ad03d04282b75fae188522d, type: 3}
+  startingRoad: {fileID: 0}
+  lastEndPoint: {fileID: 0}

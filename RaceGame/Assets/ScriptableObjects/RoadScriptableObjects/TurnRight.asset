@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac069b2d449f520489c899ab148ecc37, type: 3}
   m_Name: TurnRight
   m_EditorClassIdentifier: 
-  votedRoad: {fileID: 4414744931615560238, guid: 27c749f2af196584aa764afdeafb1656, type: 3}
+  votedRoad: {fileID: -1167320568923567958, guid: 27c749f2af196584aa764afdeafb1656, type: 3}
   roadToSpawn: {fileID: 7201033573098978829, guid: 59b9efc6dcc848246bbc6a1b2682b82a, type: 3}
+  roadType: 2

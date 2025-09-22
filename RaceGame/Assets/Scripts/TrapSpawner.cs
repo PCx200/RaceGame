@@ -26,7 +26,7 @@ public class TrapSpawner : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous; // better collision
         
         mesh = GetComponent<MeshRenderer>();
-        ChooseTrapsForTheRound();
+        //ChooseTrapsForTheRound();
         transformY = transform.position.y;
     }
 
@@ -63,6 +63,7 @@ public class TrapSpawner : MonoBehaviour
         {
             trap = trapsForRound[i];
             GameObject previewInstance = Instantiate(trap.object3D, this.transform, worldPositionStays: false);
+            
             previewInstance.transform.localPosition = Vector3.zero;
             previewInstance.transform.localRotation = Quaternion.identity;
 

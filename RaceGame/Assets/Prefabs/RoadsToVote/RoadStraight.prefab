@@ -2356,6 +2356,7 @@ GameObject:
   - component: {fileID: 1678611730923012988}
   - component: {fileID: 8593750570787839339}
   - component: {fileID: 440408255168804069}
+  - component: {fileID: 7098616060341213817}
   m_Layer: 0
   m_Name: RoadStraight
   m_TagString: Untagged
@@ -2372,7 +2373,7 @@ Transform:
   m_GameObject: {fileID: 8945855017542370536}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 120.61197, y: 0.14634971, z: 71.83609}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2454,6 +2455,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.797295, y: 2.8584177, z: 25.804035}
   m_Center: {x: 0.34529495, y: 1.2828592, z: -0.20205879}
+--- !u!114 &7098616060341213817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945855017542370536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075a56fc511aac140b0caf41c129ee03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voteCounter: 0
 --- !u!1 &9113563019010596721
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac069b2d449f520489c899ab148ecc37, type: 3}
   m_Name: Straight
   m_EditorClassIdentifier: 
-  votedRoad: {fileID: 8945855017542370536, guid: 7e56109582ae9994c975b1b8011792be, type: 3}
+  votedRoad: {fileID: 7098616060341213817, guid: 7e56109582ae9994c975b1b8011792be, type: 3}
   roadToSpawn: {fileID: 970014218468827771, guid: ef69020010efe7b4c9f51938de499bc9, type: 3}
+  roadType: 0

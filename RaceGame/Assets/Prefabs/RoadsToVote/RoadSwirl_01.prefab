@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 3696620329302147269}
   - component: {fileID: 329597282693464025}
   - component: {fileID: 2464139317781795276}
+  - component: {fileID: 7081760425611641981}
   m_Layer: 0
   m_Name: RoadSwirl_01
   m_TagString: Untagged
@@ -416,7 +417,7 @@ Transform:
   m_GameObject: {fileID: 2510023618374745857}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.599216, y: 0.1463497, z: 71.89792}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -498,6 +499,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 19.3682, y: 3.559368, z: 26.347843}
   m_Center: {x: 0.07496357, y: 1.6333343, z: 0.16041374}
+--- !u!114 &7081760425611641981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2510023618374745857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075a56fc511aac140b0caf41c129ee03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voteCounter: 0
 --- !u!1 &2645262315840588262
 GameObject:
   m_ObjectHideFlags: 0

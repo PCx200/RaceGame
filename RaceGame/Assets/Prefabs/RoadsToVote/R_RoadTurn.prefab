@@ -1217,6 +1217,7 @@ GameObject:
   - component: {fileID: 4238506476037857784}
   - component: {fileID: 811176648316444941}
   - component: {fileID: 1089429102171078597}
+  - component: {fileID: -1167320568923567958}
   m_Layer: 0
   m_Name: R_RoadTurn
   m_TagString: Untagged
@@ -1233,7 +1234,7 @@ Transform:
   m_GameObject: {fileID: 4414744931615560238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 74.666565, y: 0.15477017, z: 72.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1309,12 +1310,25 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 19.719597, y: 3.1049557, z: 24.963043}
   m_Center: {x: 0.13520432, y: 1.3977077, z: -0.32790375}
+--- !u!114 &-1167320568923567958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414744931615560238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075a56fc511aac140b0caf41c129ee03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voteCounter: 0
 --- !u!1 &5479851703292764404
 GameObject:
   m_ObjectHideFlags: 0
