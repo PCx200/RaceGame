@@ -1,5 +1,61 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2368225791433116715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9152875214225640610}
+  - component: {fileID: 2662615398932740472}
+  m_Layer: 0
+  m_Name: Decal Projector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9152875214225640610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368225791433116715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 2.3771713, y: 14.837429, z: 5.431258}
+  m_LocalScale: {x: 8.957329, y: 8.957328, z: 8.957328}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7828093370852709064}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2662615398932740472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368225791433116715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 8cf0b09827b91264a952f5ec6fbf9627, type: 2}
+  m_DrawDistance: 10
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 0.56, y: 1.05}
+  m_UVBias: {x: 0.21, y: -0.05}
+  m_DecalLayerMask: 1
+  m_ScaleMode: 0
+  m_Offset: {x: -0.2671814, y: -0.6210191, z: 1.6855669}
+  m_Size: {x: 2.3287964, y: 2.3324583, z: 0.09230435}
+  m_FadeFactor: 1
 --- !u!1 &2860398897139930954
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +218,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   fadeOutTimer: 1
+  splashParent: {fileID: 0}
   playSoundEffect: {fileID: 0}
 --- !u!82 &9013558401006653761
 AudioSource:
@@ -302,10 +359,11 @@ Transform:
   m_GameObject: {fileID: 7980855292928585473}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 1, z: 2.6}
+  m_LocalPosition: {x: 4.5, y: -0.7, z: 2.6}
   m_LocalScale: {x: 7.84, y: 7.84, z: 7.84}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 9152875214225640610}
   m_Father: {fileID: 8214449572653727777}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9037103754015563952
