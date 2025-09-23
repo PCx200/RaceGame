@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 58ab9b5e8ec96ee49a95648b49acfe0c
+guid: 652929f3abf551547aa2fc490a8a5020
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Stones
-    second: {fileID: 2100000, guid: 69936b84e2be78344841540cc8b47db0, type: 2}
+      name: Palm
+    second: {fileID: 2100000, guid: b68021692d5674b49a87e2cde0d4f750, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
