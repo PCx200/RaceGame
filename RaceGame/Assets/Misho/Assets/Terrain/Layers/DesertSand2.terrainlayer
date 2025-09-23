@@ -6,18 +6,18 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NewLayer
+  m_Name: DesertSand2
   m_DiffuseTexture: {fileID: 2800000, guid: 3765eaee2cf46d449bce2572548ede2d, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 24cf7a87eda1c494588cca0a10a8f53e, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 2e4b24708e736e54daff2915a1899f8c, type: 3}
   m_MaskMapTexture: {fileID: 2800000, guid: 2664921bf803b4c4792265f8088ef2bc, type: 3}
-  m_TileSize: {x: 90, y: 130}
+  m_TileSize: {x: 60, y: 80}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0
   m_Smoothness: 1
   m_NormalScale: 1
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
-  m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_DiffuseRemapMax: {x: 0.99215686, y: 0.8666667, z: 0.43529412, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_SmoothnessSource: 1
