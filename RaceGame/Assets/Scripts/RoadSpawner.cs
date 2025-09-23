@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoadSpawner : MonoBehaviour
 {
-    public RoadManager1 roadManager;
+    public RoadManager roadManager;
     public int voteCounts;
     public int totalPlayers = 2;
     [SerializeField] private List<GameObject> roadToVotePositions = new List<GameObject>();
@@ -16,7 +16,7 @@ public class RoadSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        roadManager = FindFirstObjectByType<RoadManager1>();
+        roadManager = FindFirstObjectByType<RoadManager>();
         for (int i = 0; i < 3; i++) 
         {
             RoadScriptableObject tempRoad = roadManager.roads[Random.Range(0, roadManager.roads.Count)];
@@ -29,7 +29,28 @@ public class RoadSpawner : MonoBehaviour
             Transform transform = roadToVotePositions[i].transform;
             GameObject go = Instantiate(tempRoad.votedRoad.gameObject, roadToVotePositions[i].transform.position, tempRoad.roadToSpawn.transform.rotation);
             go.transform.SetParent(this.transform);
-            
+
+            var parentRot = transform.rotation.eulerAngles;
+            if(parentRot.y == 0)
+            {
+
+            }
+            else if (parentRot.y >= 89 && parentRot.y < 91.0f)
+            {
+                go.transform.localRotation = Quaternion.Euler(0, go.transform.localRotation.eulerAngles.y + 90, 0);
+            }
+            else
+            {
+                go.transform.localRotation = Quaternion.Euler(0, go.transform.localRotation.eulerAngles.y - 90, 0);
+            }
+
+            //Debug.Log(transform.rotation.eulerAngles);
+            //Quaternion rot = Quaternion.Inverse(transform.rotation);
+            //Debug.Log(rot.eulerAngles);
+            //go.transform.rotation = Quaternion.Inverse(transform.rotation);
+            //go.transform.localRotation = Quaternion.identity;
+            //go.transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+
             roadsInTheScene.Add(go);
             Destroy(roadToVotePositions[i]);
             
@@ -96,7 +117,7 @@ public class RoadSpawner : MonoBehaviour
             if (index >= 0 && index < roadsToChoose.Count)
             {
                 RoadScriptableObject winnerSO = roadsToChoose[index];
-                roadManager.SpawnRoad(winnerSO);
+                roadManager.SpawnRoad(winnerSO, roadManager.winnerTransform);
                 //Debug.Log("Winner SO: " + winnerSO.name);
             }
         }
