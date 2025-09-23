@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class OilSpill : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class OilSpill : MonoBehaviour
     public float spinDuration = 1f;
     public float alignSpeed = 5f;
     public float lowFrictionDuration = 3;
+    bool joined;
 
     public List<PlayerState> playerStates = new List<PlayerState>();
 
@@ -38,6 +40,23 @@ public class OilSpill : MonoBehaviour
 
     private void Update()
     {
+        if (!joined && PlayerInputManager.instance.playerCount == 2)
+        {
+            players.Add(GameObject.Find("BlueCar(Clone)"));
+            players.Add(GameObject.Find("RedCar(Clone)"));
+
+            foreach (var player in players)
+            {
+                if (player != null)
+                {
+                    playerStates.Add(new PlayerState { player = player });
+                }
+            }
+
+            joined = true;
+        }
+
+
         foreach (var playerState in playerStates)
         {
             if (playerState.spinInAction)
@@ -80,7 +99,6 @@ public class OilSpill : MonoBehaviour
             {
                 ps.spinInAction = true;
                 ps.time = 0f;
-                Debug.Log("Write what is happening to the player, when they go throught the oil spill aka lack of traction.");
             }
         }
     }
@@ -105,6 +123,5 @@ public class OilSpill : MonoBehaviour
         WheelFrictionCurve wheelFrictionCurve = wheel.sidewaysFriction;
         wheelFrictionCurve.stiffness = stiffness;
         wheel.sidewaysFriction = wheelFrictionCurve;
-
     }
 }
