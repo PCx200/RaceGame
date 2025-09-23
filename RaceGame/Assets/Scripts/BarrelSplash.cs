@@ -11,12 +11,16 @@ public class BarrelSplash : MonoBehaviour
     private bool splashIsShown = false;
 
     private int index;
-
+    public Transform splashParent;
     public PlaySoundEffect playSoundEffect;
 
     private void Awake()
     {
         playSoundEffect = GetComponent<PlaySoundEffect>();
+        if (barrelSplash.Count == 0 && splashParent != null)
+        {
+            barrelSplash.AddRange(splashParent.GetComponentsInChildren<RawImage>(true));
+        }
     }
 
     private void FixedUpdate()
