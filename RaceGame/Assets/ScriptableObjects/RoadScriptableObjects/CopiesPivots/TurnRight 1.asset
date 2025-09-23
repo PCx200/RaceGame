@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac069b2d449f520489c899ab148ecc37, type: 3}
+  m_Name: TurnRight 1
+  m_EditorClassIdentifier: 
+  votedRoad: {fileID: -1167320568923567958, guid: 27c749f2af196584aa764afdeafb1656, type: 3}
+  roadToSpawn: {fileID: 646891346314479790, guid: d0085cb5c659a6f49af17cf973b219de, type: 3}
+  roadType: 2

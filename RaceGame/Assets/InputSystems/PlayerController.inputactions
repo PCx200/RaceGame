@@ -31,7 +31,7 @@
                     "id": "583f14cc-1957-45fc-85c3-c1463da9fa07",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "InvertVector2(invertX=false)",
                     "groups": ";Gamepad",
                     "action": "Move",
                     "isComposite": false,
