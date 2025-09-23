@@ -91,8 +91,8 @@ public class CarController : MonoBehaviour
         frontRightWheelCollider.steerAngle = currentSteerAngle;
         //ChangeFriction(frontLeftWheelCollider);
        // ChangeFriction(frontRightWheelCollider);
-        ChangeFriction(backRightWheelCollider);
-        ChangeFriction(backLeftWheelCollider);
+        //ChangeFriction(backRightWheelCollider);
+        //ChangeFriction(backLeftWheelCollider);
        
     }
 
