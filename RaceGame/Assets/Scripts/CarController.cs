@@ -13,10 +13,10 @@ public class CarController : MonoBehaviour
     [SerializeField] float maxSteerAngle = 30f;
 
     [Header("Wheels")]
-    [SerializeField] WheelCollider frontLeftWheelCollider;
-    [SerializeField] WheelCollider frontRightWheelCollider;
-    [SerializeField] WheelCollider backLeftWheelCollider;
-    [SerializeField] WheelCollider backRightWheelCollider;
+    [SerializeField] public WheelCollider frontLeftWheelCollider;
+    [SerializeField] public WheelCollider frontRightWheelCollider;
+    [SerializeField] public WheelCollider backLeftWheelCollider;
+    [SerializeField] public WheelCollider backRightWheelCollider;
 
     [SerializeField] Transform frontLeftWheelTransform;
     [SerializeField] Transform frontRightWheelTransform;
@@ -89,6 +89,27 @@ public class CarController : MonoBehaviour
         currentSteerAngle = maxSteerAngle * movementInput.x;
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;
+        //ChangeFriction(frontLeftWheelCollider);
+       // ChangeFriction(frontRightWheelCollider);
+        ChangeFriction(backRightWheelCollider);
+        ChangeFriction(backLeftWheelCollider);
+       
+    }
+
+    private void ChangeFriction(WheelCollider wheel)
+    {
+        WheelFrictionCurve wheelFrictionCurve = wheel.sidewaysFriction;
+        if (currentSteerAngle > 20)
+        {
+            wheelFrictionCurve.stiffness = 2f;
+            wheel.sidewaysFriction = wheelFrictionCurve;
+        }
+        else
+        {
+            wheelFrictionCurve.stiffness = 2.5f;
+            wheel.sidewaysFriction = wheelFrictionCurve;
+        }
+        
     }
 
     private void UpdateSingleWheel(WheelCollider wheelColider, Transform wheelTransform)

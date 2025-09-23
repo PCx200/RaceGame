@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class OilSpill : MonoBehaviour
     public float spinSpeed = 90f;
     public float spinDuration = 1f;
     public float alignSpeed = 5f;
+    public float lowFrictionDuration = 3;
 
     public List<PlayerState> playerStates = new List<PlayerState>();
 
@@ -72,6 +74,8 @@ public class OilSpill : MonoBehaviour
         {
             var ps = playerStates.Find(p => p.player == other.gameObject);
 
+            CarController carController = GetComponent<CarController>();
+            StartCoroutine(GoofyAahSpin(carController));
             if (ps != null)
             {
                 ps.spinInAction = true;
@@ -79,5 +83,28 @@ public class OilSpill : MonoBehaviour
                 Debug.Log("Write what is happening to the player, when they go throught the oil spill aka lack of traction.");
             }
         }
+    }
+
+    private IEnumerator GoofyAahSpin(CarController carController)
+    {
+        ChangeFriction(carController.frontLeftWheelCollider, 0.2f);
+        ChangeFriction(carController.frontRightWheelCollider, 0.2f);
+        ChangeFriction(carController.backLeftWheelCollider, 0.2f);
+        ChangeFriction(carController.backRightWheelCollider, 0.2f);
+
+        yield return new WaitForSeconds(lowFrictionDuration);
+
+        ChangeFriction(carController.frontLeftWheelCollider, 2.5f);
+        ChangeFriction(carController.frontRightWheelCollider, 2.5f);
+        ChangeFriction(carController.backLeftWheelCollider, 2.5f);
+        ChangeFriction(carController.backRightWheelCollider, 2.5f);
+    }
+
+    private void ChangeFriction(WheelCollider wheel, float stiffness)
+    {
+        WheelFrictionCurve wheelFrictionCurve = wheel.sidewaysFriction;
+        wheelFrictionCurve.stiffness = stiffness;
+        wheel.sidewaysFriction = wheelFrictionCurve;
+
     }
 }
