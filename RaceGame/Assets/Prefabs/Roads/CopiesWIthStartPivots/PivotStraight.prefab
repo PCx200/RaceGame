@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoadStraight (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4773915566779442746, guid: ef69020010efe7b4c9f51938de499bc9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6013626093028711957, guid: ef69020010efe7b4c9f51938de499bc9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

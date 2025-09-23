@@ -40,6 +40,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8932550685209492443}
     m_Modifications:
+    - target: {fileID: 5293148111616704688, guid: 7ad3832611bab0048808ac71338d2595, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5916713620852245289, guid: 7ad3832611bab0048808ac71338d2595, type: 3}
       propertyPath: m_Name
       value: RoadSwirl_02

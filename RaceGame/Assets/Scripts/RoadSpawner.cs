@@ -27,21 +27,21 @@ public class RoadSpawner : MonoBehaviour
             }
             roadsToChoose.Add(tempRoad);
             Transform transform = roadToVotePositions[i].transform;
-            GameObject go = Instantiate(tempRoad.votedRoad.gameObject, roadToVotePositions[i].transform.position, tempRoad.roadToSpawn.transform.rotation);
+            GameObject go = Instantiate(tempRoad.votedRoad.gameObject, roadToVotePositions[i].transform);
             go.transform.SetParent(this.transform);
 
-            var parentRot = transform.rotation.eulerAngles;
+            Vector3 parentRot = transform.rotation.eulerAngles;
             if(parentRot.y == 0)
             {
 
             }
             else if (parentRot.y >= 89 && parentRot.y < 91.0f)
             {
-                go.transform.localRotation = Quaternion.Euler(0, go.transform.localRotation.eulerAngles.y + 90, 0);
+                go.transform.rotation = Quaternion.Euler(0, go.transform.localRotation.eulerAngles.y + 90, 0);
             }
             else
             {
-                go.transform.localRotation = Quaternion.Euler(0, go.transform.localRotation.eulerAngles.y - 90, 0);
+                go.transform.rotation = Quaternion.Euler(0, go.transform.localRotation.eulerAngles.y - 90, 0);
             }
 
             //Debug.Log(transform.rotation.eulerAngles);
@@ -117,7 +117,7 @@ public class RoadSpawner : MonoBehaviour
             if (index >= 0 && index < roadsToChoose.Count)
             {
                 RoadScriptableObject winnerSO = roadsToChoose[index];
-                roadManager.SpawnRoad(winnerSO, roadManager.winnerTransform);
+                roadManager.SpawnRoad(winnerSO, winner.transform);
                 //Debug.Log("Winner SO: " + winnerSO.name);
             }
         }

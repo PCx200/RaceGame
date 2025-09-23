@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5633341733919648408, guid: 5be5edbaf7dcb22419403f5af2e56951, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7486057181699204530, guid: 5be5edbaf7dcb22419403f5af2e56951, type: 3}
       propertyPath: m_Name
       value: L_RoadTurn
