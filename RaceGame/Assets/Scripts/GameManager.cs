@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject mainCamera;
 
     public List<PlayerInput> ActivePlayers = new List<PlayerInput>();
+    public List<PlayerInput> FinishedPlayers = new List<PlayerInput>();
+    [SerializeField] int finishedPlayersCount;
 
     public List<UnityEvent> events;
 
@@ -101,6 +103,12 @@ public class GameManager : MonoBehaviour
     { 
         ActivePlayers.Clear();
         ActivePlayers.AddRange(FindObjectsByType<PlayerInput>(FindObjectsSortMode.None));  
+    }
+
+    public void PlayerFinished(PlayerInput finishedPlayer)
+    {
+        FinishedPlayers.Add(finishedPlayer);
+        finishedPlayersCount++;
     }
 
     public void UpdateRound()
