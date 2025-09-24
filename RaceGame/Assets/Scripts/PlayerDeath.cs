@@ -12,6 +12,7 @@ public class PlayerDeath : MonoBehaviour
             CarController carController = other.gameObject.GetComponent<CarController>();
             carController.OnDeath();
             Destroy(explosion, 2f);
+            Destroy(other.gameObject);
             Debug.Log("Write what is happening to the player, when they hit the a trap.");
         }
     }
