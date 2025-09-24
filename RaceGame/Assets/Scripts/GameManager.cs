@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
 
     public List<UnityEvent> events;
 
+    public GameObject halfScreenP1;
+    public GameObject halfScreenP2;
+
     private void Awake()
     {
         Instance = this;
@@ -102,7 +105,7 @@ public class GameManager : MonoBehaviour
         ActivePlayers.Clear();
         ActivePlayers.AddRange(FindObjectsByType<PlayerInput>(FindObjectsSortMode.None));  
     }
-
+   
     public void UpdateRound()
     { 
         // players join and start playing

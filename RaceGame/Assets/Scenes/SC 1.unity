@@ -3373,6 +3373,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  halfScreenP1: {fileID: 0}
+  halfScreenP2: {fileID: 0}
 --- !u!4 &1452331878
 Transform:
   m_ObjectHideFlags: 0
