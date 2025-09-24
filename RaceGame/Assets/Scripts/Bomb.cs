@@ -26,6 +26,8 @@ public class Bomb : MonoBehaviour
             explosion = Instantiate(explosion, transform.position, Quaternion.identity);
             playSoundEffect = explosion.GetComponent<PlaySoundEffect>();
             playSoundEffect.PlaySound();
+            CarController carController = collision.gameObject.GetComponent<CarController>();
+            carController.OnDeath();
             Object.Destroy(gameObject);
             Object.Destroy(collision.gameObject);
             Destroy(explosion, playSoundEffect.soundEffect.length);

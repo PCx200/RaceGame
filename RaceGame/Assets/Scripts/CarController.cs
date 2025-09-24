@@ -7,6 +7,7 @@ public class CarController : MonoBehaviour
     [SerializeField] Rigidbody rb;
     float currentSpeed;
 
+
     [Header("Car Settings")]
     [SerializeField] float motorForce = 100f;
     [SerializeField] float breakForce = 1000f;
@@ -149,7 +150,8 @@ public class CarController : MonoBehaviour
     public void OnDeath()
     {
         GameObject explosion = Instantiate(particleEffect, gameObject.transform.position, gameObject.transform.rotation);
-        Destroy(explosion,5);
+        Destroy(explosion, 5);
+        //GameObject explosionHalfScreen =
     }
 
     //private void Move()

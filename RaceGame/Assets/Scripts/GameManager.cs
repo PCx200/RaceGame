@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
 
     public List<UnityEvent> events;
 
+    public GameObject halfScreenP1;
+    public GameObject halfScreenP2;
+
     private void Awake()
     {
         Instance = this;
