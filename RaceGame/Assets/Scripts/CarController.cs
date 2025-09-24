@@ -23,6 +23,11 @@ public class CarController : MonoBehaviour
     [SerializeField] Transform backLeftWheelTransform;
     [SerializeField] Transform backRightWheelTransform;
 
+    [Header("Explosion")]
+    [SerializeField] private GameObject particleEffect;
+    [SerializeField] private GameObject explodedScreen;
+    [SerializeField] private GameObject passedFinishlineScreen;
+
     //[SerializeField] float movementSpeed;
     Vector2 movementInput;
 
@@ -139,6 +144,12 @@ public class CarController : MonoBehaviour
         }
 
         //Debug.Log("Car Speed: " + speedKmh.ToString("F1") + " km/h");
+    }
+
+    public void OnDeath()
+    {
+        GameObject explosion = Instantiate(particleEffect, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(explosion,5);
     }
 
     //private void Move()
