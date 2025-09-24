@@ -668,6 +668,9 @@ MonoBehaviour:
   frontRightWheelTransform: {fileID: 637305883922056924}
   backLeftWheelTransform: {fileID: 4623420541799296421}
   backRightWheelTransform: {fileID: 1845821647545120832}
+  particleEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  explodedScreen: {fileID: 0}
+  passedFinishlineScreen: {fileID: 0}
 --- !u!114 &6454978686792811011
 MonoBehaviour:
   m_ObjectHideFlags: 0
