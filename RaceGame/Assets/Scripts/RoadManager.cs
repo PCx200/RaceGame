@@ -11,6 +11,7 @@ public class RoadManager : MonoBehaviour
     
     public List<RoadScriptableObject> roads = new List<RoadScriptableObject>();
     public GameObject roadsToVoteSpawner;
+    [SerializeField] Transform spawnerTransform;
     [SerializeField] public List<(int,GameObject)> placedRoads = new List<(int, GameObject)>();
     public GameObject startingRoad;
     private enum RoadContinue {Forward, Backward,Right,Left };
@@ -28,6 +29,8 @@ public class RoadManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.UpdateActivePlayers();
+
         placedRoads.Add((0, startingRoad));
         lastEndPoint = placedRoads[placedRoads.Count - 1].Item2.transform.GetChild(0).GetChild(3);
         lastRoad = placedRoads[placedRoads.Count - 1].Item2.transform;
@@ -53,24 +56,7 @@ public class RoadManager : MonoBehaviour
         Transform newRoadTransform = lastRoad;
         Debug.Log(placedRoads[0]);
         lastEndPoint = placedRoads[placedRoads.Count - 1].Item2.transform.GetChild(0).GetChild(3);
-        Vector3 spawnPoint = new Vector3(lastEndPoint.position.x, lastEndPoint.position.y, lastEndPoint.position.z);
-        if (yRotation >= -0.1f || yRotation <= 1f)
-        {
-            spawnPoint.z += 20f;
-        }
-        else if (yRotation >= 179f || yRotation <= 181f)
-        {
-            spawnPoint.z -= 20f;
-        }
-        else if (yRotation >= 89f || yRotation <= 91f)
-        {
-            spawnPoint.x -= 20f;
-        }
-        else
-        {
-            spawnPoint.x += 20f;
-        }
-
+        Vector3 spawnPoint = spawnerTransform.position;
 
         if (lastRoadType == 0)
         {
@@ -80,12 +66,12 @@ public class RoadManager : MonoBehaviour
         else if (lastRoadType == 1)
         {
             yRotation -= 90f;
-            tempSpawner = Instantiate(roadsToVoteSpawner, spawnPoint, Quaternion.Euler(new Vector3(0, yRotation, 0)));
+            tempSpawner = Instantiate(roadsToVoteSpawner, spawnPoint, Quaternion.Euler(new Vector3(0, 0, 0)));
         }
         else
         {
             yRotation += 90f;
-            tempSpawner = Instantiate(roadsToVoteSpawner, spawnPoint, Quaternion.Euler(new Vector3(0,-yRotation,0)));
+            tempSpawner = Instantiate(roadsToVoteSpawner, spawnPoint, Quaternion.Euler(new Vector3(0,0,0)));
         }
 
 
@@ -130,7 +116,8 @@ public class RoadManager : MonoBehaviour
 
 
         Destroy(tempSpawner);
-        SpawnSpawnerInTheCorrectDirection();
+        //SpawnSpawnerInTheCorrectDirection();
+        GameManager.Instance.TeleportToSpawnPoint();
     }
 
     public IEnumerator PutNextRoad()

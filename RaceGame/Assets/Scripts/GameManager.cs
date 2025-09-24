@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject mainCamera;
 
+    public List<PlayerInput> ActivePlayers = new List<PlayerInput>();
+
     public List<UnityEvent> events;
 
     private void Awake()
@@ -33,7 +35,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-       StartCoroutine(SplitScreen());
+        StartCoroutine(SplitScreen());
+
     }
 
     IEnumerator SplitScreen()
@@ -62,8 +65,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void TeleportToSpawnPoint()
-    { 
-        
+    {
+        for (int i = 0; i < ActivePlayers.Count; i++)
+        {
+            PlayerInput player = ActivePlayers[i];
+            player.transform.position = spawnPoints[i].position;
+        }
     }
     public int GetPlayerCount()
     {
@@ -88,5 +95,22 @@ public class GameManager : MonoBehaviour
     public void InvokeEvent(int eventId)
     {
         events[eventId].Invoke();
+    }
+
+    public void UpdateActivePlayers()
+    { 
+        ActivePlayers.Clear();
+        ActivePlayers.AddRange(FindObjectsByType<PlayerInput>(FindObjectsSortMode.None));  
+    }
+
+    public void UpdateRound()
+    { 
+        // players join and start playing
+        // when the active players hit the finish collider the round ends, UI is being desplayed 
+        // camera for the chosing of the roads is activated, players choose a road and get returned to their spawn
+        // camera for traps is activated, players place traps, when they both have placed their traps -> return them to their spawn points and immediatelly disable them
+        // enable car cameras and spawn the cars
+
+    
     }
 }

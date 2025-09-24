@@ -24,6 +24,7 @@ public class SplitScreen : MonoBehaviour
     private void OnPlayerJoined(PlayerInput input)
     {
         GameManager.Instance.UpdatePlayerCount();
+        GameManager.Instance.UpdateActivePlayers();
 
         GameManager.Instance.PickCar(1);
 
