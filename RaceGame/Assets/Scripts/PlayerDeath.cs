@@ -9,6 +9,8 @@ public class PlayerDeath : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             explosion = Instantiate(explosion, transform.position, Quaternion.identity);
+            CarController carController = other.gameObject.GetComponent<CarController>();
+            carController.OnDeath();
             Destroy(explosion, 2f);
             Debug.Log("Write what is happening to the player, when they hit the a trap.");
         }
