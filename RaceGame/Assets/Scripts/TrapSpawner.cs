@@ -14,7 +14,7 @@ public class TrapSpawner : MonoBehaviour
 
     private MeshRenderer mesh;
 
-    private float transformY = 30f;
+    private float transformY = 30.3f;
     private Vector2 movementInput;
     private Rigidbody rb;
     private TrapScriptableObject trap;
