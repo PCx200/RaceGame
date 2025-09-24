@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] private int playerCount;
-    [NonSerialized] public bool isSplited;
+    [SerializeField] public bool isSplited;
+    public bool areCars = true;
+
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] GameObject boarderPanel;
 
@@ -47,9 +49,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SplitScreen()
     {
-        if (!isSplited)
-        {           
-            if (PlayerInputManager.instance.playerCount == 2)
+            if (PlayerInputManager.instance.playerCount == 2 && areCars)
             {
                 if (boarderPanel != null && mainCamera != null)
                 {
@@ -59,7 +59,15 @@ public class GameManager : MonoBehaviour
                     isSplited = true;
                 }
             }
-        }
+            else
+            {
+                isSplited = false;
+                boarderPanel.SetActive(false);
+                mainCamera.SetActive(true);
+            }
+
+        
+
     }
     public Transform GetSpawnPoint(int index)
     {
@@ -99,10 +107,11 @@ public class GameManager : MonoBehaviour
     public void IncreasePlayersPlacedTrapsCount()
     { 
         playersPlacedTrapsCount++;
-        if (playersPlacedTrapsCount > 2)
-        { 
-            playersPlacedTrapsCount = 1;
-        }
+    }
+
+    public void ZerofyPlayerPlacedTrapCount()
+    {
+        playersPlacedTrapsCount = 0;
     }
 
     public void PickCar(int index)
@@ -126,5 +135,10 @@ public class GameManager : MonoBehaviour
     {
         FinishedPlayers.Add(finishedPlayer);
         finishedPlayersCount++; 
+    }
+
+    public void AreCars()
+    {
+        areCars = !areCars;
     }
 }

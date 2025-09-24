@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 898036484302996678, guid: 4adca3decfa16934ea0ed6338c029a57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 898036484302996678, guid: 4adca3decfa16934ea0ed6338c029a57, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1702,6 +1702,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCount: 0
+  isSplited: 0
+  areCars: 1
   spawnPoints:
   - {fileID: 3162818922578947803}
   - {fileID: 724511390}
@@ -1781,6 +1783,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1452331877}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AreCars
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1941,6 +1955,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.SphereCollider, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1452331877}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AreCars
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1452331877}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ZerofyPlayerPlacedTrapCount
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2442,7 +2480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8052317414343439573, guid: 00f2adea4e0a6c8468b47da239f48119, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 8052317414343439573, guid: 00f2adea4e0a6c8468b47da239f48119, type: 3}
       propertyPath: m_LocalPosition.z
