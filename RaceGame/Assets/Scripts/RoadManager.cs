@@ -34,8 +34,7 @@ public class RoadManager : MonoBehaviour
         placedRoads.Add((0, startingRoad));
         lastEndPoint = placedRoads[placedRoads.Count - 1].Item2.transform.GetChild(0).GetChild(3);
         lastRoad = placedRoads[placedRoads.Count - 1].Item2.transform;
-        lastRoadType = placedRoads[placedRoads.Count - 1].Item1;
-        finishPoint.position = lastRoad.position;
+        lastRoadType = placedRoads[placedRoads.Count - 1].Item1;    
     }
 
     private void UpdateYRotation()
