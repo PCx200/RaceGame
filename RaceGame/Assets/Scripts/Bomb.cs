@@ -1,4 +1,7 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Bomb : MonoBehaviour
 {
@@ -28,8 +31,10 @@ public class Bomb : MonoBehaviour
             playSoundEffect.PlaySound();
             CarController carController = collision.gameObject.GetComponent<CarController>();
             carController.OnDeath();
-            Object.Destroy(gameObject);
+
             Object.Destroy(collision.gameObject);
+            Object.Destroy(gameObject);
+
             Destroy(explosion, playSoundEffect.soundEffect.length);
         }
     }

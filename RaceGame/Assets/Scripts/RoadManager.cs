@@ -36,7 +36,6 @@ public class RoadManager : MonoBehaviour
         lastRoad = placedRoads[placedRoads.Count - 1].Item2.transform;
         lastRoadType = placedRoads[placedRoads.Count - 1].Item1;
         finishPoint.position = lastRoad.position;
-        SpawnSpawnerInTheCorrectDirection();
     }
 
     private void UpdateYRotation()
@@ -113,11 +112,10 @@ public class RoadManager : MonoBehaviour
 
         finishPoint.SetParent(placedRoads[placedRoads.Count - 1].Item2.transform);
 
-
-
         Destroy(tempSpawner);
         //SpawnSpawnerInTheCorrectDirection();
         GameManager.Instance.TeleportToSpawnPoint();
+        GameManager.Instance.InvokeEvent(1);
     }
 
     public IEnumerator PutNextRoad()

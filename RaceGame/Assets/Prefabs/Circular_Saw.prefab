@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9214385414990254945}
@@ -179,9 +179,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spinAxis: {x: 0, y: 0, z: 1}
-  moveAmplitude: 2
-  moveSpeed: 2
-  spinSpeed: 90
+  moveAmplitude: 25
+  moveSpeed: 2.5
+  spinSpeed: 120
 --- !u!82 &1351306394203730056
 AudioSource:
   m_ObjectHideFlags: 0

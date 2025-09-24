@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour
     public List<PlayerInput> FinishedPlayers = new List<PlayerInput>();
     [SerializeField] int finishedPlayersCount;
 
-    public List<UnityEvent> events;
+    [SerializeField] int playersPlacedTrapsCount;
+
+    public List<UnityEvent> Events;
 
     public GameObject halfScreenP1;
     public GameObject halfScreenP2;
@@ -41,7 +43,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         StartCoroutine(SplitScreen());
-
     }
 
     IEnumerator SplitScreen()
@@ -91,6 +92,19 @@ public class GameManager : MonoBehaviour
         return playerPrefabs[index];
     }
 
+    public int GetPlayersPlacedTrapsCount()
+    { 
+        return playersPlacedTrapsCount;
+    }
+    public void IncreasePlayersPlacedTrapsCount()
+    { 
+        playersPlacedTrapsCount++;
+        if (playersPlacedTrapsCount > 2)
+        { 
+            playersPlacedTrapsCount = 1;
+        }
+    }
+
     public void PickCar(int index)
     {
         Debug.Log($"Index: {index}");
@@ -99,7 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void InvokeEvent(int eventId)
     {
-        events[eventId].Invoke();
+        Events[eventId].Invoke();
     }
 
     public void UpdateActivePlayers()
@@ -111,17 +125,6 @@ public class GameManager : MonoBehaviour
     public void PlayerFinished(PlayerInput finishedPlayer)
     {
         FinishedPlayers.Add(finishedPlayer);
-        finishedPlayersCount++;
-    }
-
-    public void UpdateRound()
-    { 
-        // players join and start playing
-        // when the active players hit the finish collider the round ends, UI is being desplayed 
-        // camera for the chosing of the roads is activated, players choose a road and get returned to their spawn
-        // camera for traps is activated, players place traps, when they both have placed their traps -> return them to their spawn points and immediatelly disable them
-        // enable car cameras and spawn the cars
-
-    
+        finishedPlayersCount++; 
     }
 }

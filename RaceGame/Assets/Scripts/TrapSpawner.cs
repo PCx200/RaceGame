@@ -14,7 +14,7 @@ public class TrapSpawner : MonoBehaviour
 
     private MeshRenderer mesh;
 
-    private float transformY;
+    private float transformY = 0;
     private Vector2 movementInput;
     private Rigidbody rb;
     private TrapScriptableObject trap;
@@ -27,7 +27,7 @@ public class TrapSpawner : MonoBehaviour
         
         mesh = GetComponent<MeshRenderer>();
         //ChooseTrapsForTheRound();
-        transformY = transform.position.y;
+        //transformY = transform.position.y;
     }
 
     public void OnMove(InputValue input)
@@ -87,9 +87,13 @@ public class TrapSpawner : MonoBehaviour
             Destroy(previewInstance);
         }
 
-      
-
         mesh.enabled = true;
+        GameManager.Instance.IncreasePlayersPlacedTrapsCount();
+
+        if (GameManager.Instance.GetPlayersPlacedTrapsCount() == 2)
+        {
+            GameManager.Instance.InvokeEvent(2);
+        }
     }
 
     private static void MakeTheTrapGhost(GameObject previewInstance)
