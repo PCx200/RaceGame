@@ -26,11 +26,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] int finishedPlayersCount;
 
     [SerializeField] int playersPlacedTrapsCount;
+    [SerializeField] GameObject descriptionToJoinTheGame;
 
     public List<UnityEvent> Events;
 
     public GameObject halfScreenP1;
     public GameObject halfScreenP2;
+
     
 
     private void Awake()
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
                 if (boarderPanel != null && mainCamera != null)
                 {
                     isSplited = true;
+                    descriptionToJoinTheGame.SetActive(false);
                     yield return new WaitForSeconds(3);
                     boarderPanel.SetActive(true);
                     mainCamera.SetActive(false);

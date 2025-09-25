@@ -65,7 +65,7 @@ public class TrapSpawner : MonoBehaviour
             GameObject previewInstance = Instantiate(trap.object3D, this.transform, worldPositionStays: false);
             previewInstance.transform.rotation = trap.object3D.transform.rotation;
             previewInstance.transform.localPosition = Vector3.zero;
-            previewInstance.transform.localRotation = Quaternion.identity;
+            //previewInstance.transform.localRotation = Quaternion.identity;
 
             //MakeTheTrapGhost(previewInstance);
 
@@ -131,7 +131,7 @@ public class TrapSpawner : MonoBehaviour
 
         yield return new WaitUntil(() => placeAction.WasPerformedThisFrame());
 
-        Instantiate(trap.object3D, transform.position, Quaternion.identity);
+        Instantiate(trap.object3D, transform.position, trap.object3D.transform.rotation);
     }
 
     void SetGhostColor(Color color)
