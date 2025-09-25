@@ -76,10 +76,11 @@ public class FinishPoint : MonoBehaviour
 
         // Wait until the end of the frame for Unity to finalize destruction
         yield return new WaitForEndOfFrame();
-
+        
         // Clear the lists
         GameManager.Instance.ActivePlayers.Clear();
         GameManager.Instance.FinishedPlayers.Clear();
+        GameManager.Instance.isSplited = false;
 
         // Invoke the event to spawn new players
         GameManager.Instance.InvokeEvent(0);

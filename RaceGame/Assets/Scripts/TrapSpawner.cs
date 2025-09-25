@@ -63,7 +63,7 @@ public class TrapSpawner : MonoBehaviour
         {
             trap = trapsForRound[i];
             GameObject previewInstance = Instantiate(trap.object3D, this.transform, worldPositionStays: false);
-            
+            previewInstance.transform.rotation = trap.object3D.transform.rotation;
             previewInstance.transform.localPosition = Vector3.zero;
             previewInstance.transform.localRotation = Quaternion.identity;
 
@@ -72,11 +72,15 @@ public class TrapSpawner : MonoBehaviour
             //SetGhostColor(new Color(0, 1, 0, 0.5f));
 
             //SphereCollider previewTrapCollider = previewInstance.GetComponent<SphereCollider>();
-
-            if (trap.uiPicture != null)
+            int num = i;
+            num++;
+            if (trap.uiPicture != null&&num<=trapsForRound.Count-1)
             {
-                int num = i;
-                trapPreviewSprite.sprite = trapsForRound[num++].uiPicture;
+                trapPreviewSprite.sprite = trapsForRound[num].uiPicture;
+            }
+            else
+            {
+                trapPreviewSprite.gameObject.SetActive(false);
             }
 
             yield return StartCoroutine(PlaceTrap(playerInput));

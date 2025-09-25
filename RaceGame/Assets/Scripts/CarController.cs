@@ -44,7 +44,7 @@ public class CarController : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager.Instance.isSplited)
+        if (GameManager.Instance.isSplited && GameManager.Instance.isReadyToDrive)
         {
             HandleMotor();
             HandleSteering();

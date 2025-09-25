@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int playerCount;
     [SerializeField] public bool isSplited;
     public bool areCars = true;
-
+    public bool isReadyToDrive = false;
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] GameObject boarderPanel;
 
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject halfScreenP1;
     public GameObject halfScreenP2;
+    
 
     private void Awake()
     {
@@ -49,14 +50,18 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SplitScreen()
     {
+        if (!isSplited)
+        {
             if (PlayerInputManager.instance.playerCount == 2 && areCars)
             {
                 if (boarderPanel != null && mainCamera != null)
                 {
-                    yield return new WaitForSeconds(5);
+                    isSplited = true;
+                    yield return new WaitForSeconds(3);
                     boarderPanel.SetActive(true);
                     mainCamera.SetActive(false);
-                    isSplited = true;
+                    isReadyToDrive = true;
+
                 }
             }
             else
@@ -64,8 +69,9 @@ public class GameManager : MonoBehaviour
                 isSplited = false;
                 boarderPanel.SetActive(false);
                 mainCamera.SetActive(true);
+                isReadyToDrive = false;
             }
-
+        }
         
 
     }
